@@ -7,6 +7,7 @@ defmodule KinoSampler.Application do
 
   @impl true
   def start(_type, _args) do
+    Kino.SmartCell.register(KinoSampler)
     children = [
       # Starts a worker by calling: KinoSampler.Worker.start_link(arg)
       # {KinoSampler.Worker, arg}

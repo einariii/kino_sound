@@ -5,23 +5,22 @@ defmodule KinoSampler do
   alias KinoSampler.Player
 
   @impl true
-  def init(attrs, ctx) do
+  def init(_attrs, ctx) do
     fields = %{}
 
-    Process.send(self(), "update", [])
+    # Process.send(self(), "play", [])
     {:ok, assign(ctx, fields: fields)}
   end
 
-  def handle_event("play", ctx) do
+  def handle_info("play", ctx) do
     # Start playing the audio sample(s)
     # Update the ctx with the playback state
+    Process.send(self(), "play", [])
     {:noreply, ctx}
   end
 
-  def handle_event("stop", ctx) do
+  def handle_info("stop", ctx) do
     # Stop playing the audio sample(s)
-    # Update the ctx with the playback state
-    # {:noreply, assign(socket, samples_playing: false)}
     {:noreply, ctx}
   end
 
