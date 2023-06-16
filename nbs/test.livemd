@@ -1,0 +1,17 @@
+# test
+
+```elixir
+Mix.install([{:kino_sampler, path: "."}])
+```
+
+## Section
+
+```elixir
+
+```
+
+<!-- livebook:{"attrs":{},"chunks":null,"kind":"Elixir.KinoSampler","livebook_object":"smart_cell"} -->
+
+```elixir
+:ok
+```
