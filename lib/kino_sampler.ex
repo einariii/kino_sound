@@ -15,7 +15,7 @@ defmodule KinoSampler do
   def handle_info("play", ctx) do
     # Start playing the audio sample(s)
     # Update the ctx with the playback state
-    Process.send(self(), "play", [])
+    # Process.send(self(), "play", [])
     {:noreply, ctx}
   end
 

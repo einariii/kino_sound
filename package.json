@@ -14,6 +14,7 @@
     "esbuild": "^0.18.2"
   },
   "dependencies": {
+    "howler": "^2.2.3",
     "smplr": "^0.6.0"
   }
 }
