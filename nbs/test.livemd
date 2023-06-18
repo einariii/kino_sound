@@ -14,7 +14,7 @@ Mix.install([{:kino_sampler, path: "."}])
 
 ```elixir
 dest_pid = KinoSampler.get_pid() |> Keyword.get(:pid) |> IO.inspect()
-send(dest_pid, "finished")
+send(dest_pid, "error")
 
 # KinoSampler.finished(:finished)
 

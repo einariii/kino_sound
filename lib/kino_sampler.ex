@@ -42,7 +42,7 @@ defmodule KinoSampler do
   end
 
   def handle_info(msg, ctx) do
-    broadcast_event(ctx, "finished", [])
+    broadcast_event(ctx, msg, [])
     # case msg do
     #   "finished" -> broadcast_event(ctx, "finished", [])
     #   "error" -> broadcast_event(ctx, "error", [])
