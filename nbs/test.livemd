@@ -13,11 +13,14 @@ Mix.install([{:kino_sampler, path: "."}])
 ```
 
 ```elixir
-# KinoSampler.finished("finished")
+KinoSampler.finished(:finished)
 
 dest_pid = KinoSampler.just_pid() |> IO.inspect()
 send(dest_pid, "finished")
 
+# receive do
+#   "finished" -> :ok
+# end
 # Kino.SmartCell.set_attribute(KinoSampler, my_attribute: "Hello, smart ass!")
 # Kino.SmartCell.set_attribute("Hello, smart ass!")
 
