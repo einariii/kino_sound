@@ -13,10 +13,26 @@ Mix.install([{:kino_sampler, path: "."}])
 ```
 
 ```elixir
-KinoSampler.finished(:finished)
+KinoSampler.get_pid()
+```
 
-dest_pid = KinoSampler.just_pid() |> IO.inspect()
-send(dest_pid, "finished")
+```elixir
+# Process.put(:hello, "world2")
+```
+
+```elixir
+x = Process.get(:sampler_pid2312)
+```
+
+```elixir
+Map.get(x, :hello)
+```
+
+```elixir
+# KinoSampler.finished(:finished)
+
+# dest_pid = KinoSampler.just_pid() |> IO.inspect()
+# send(dest_pid, "finished")
 
 # receive do
 #   "finished" -> :ok

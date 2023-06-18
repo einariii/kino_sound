@@ -7,20 +7,23 @@ defmodule KinoSampler do
   # @my_attribute nil
 
   @impl true
-  def init(_attrs, ctx) do
-    pid = pid_to_string()
+  def init(attrs, ctx) do
+    pid = self()
+    :ets.new(:sampler, [:named_table, :set, :public])
+    :ets.insert(:sampler, {:pid, pid})
+    pid_str = pid_to_string(pid)
+
     fields = %{
-      pid: pid
-      # pid: attrs["pid"] || ""
+      # pid: pid
+      pid: attrs["pid"] || pid_str
     }
 
     # Process.send(self(), "play", [])
     {:ok, assign(ctx, fields: fields)}
   end
 
-  defp pid_to_string do
-    self = self()
-    full_pid = "#{inspect(self)}"
+  defp pid_to_string(pid) do
+    full_pid = "#{inspect(pid)}"
     Regex.scan(~r/\d+\.\d+\.\d+/, full_pid)
   end
 
@@ -73,5 +76,9 @@ defmodule KinoSampler do
       :ok
     end
     |> Kino.SmartCell.quoted_to_string()
+  end
+
+  def get_pid() do
+    :ets.lookup(:sampler, :pid)
   end
 end
