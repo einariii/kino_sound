@@ -4,29 +4,37 @@ defmodule KinoSampler do
   use Kino.SmartCell, name: "Smart Sounds"
   alias KinoSampler.Player
 
+  @attribute :my_attribute
+
   @impl true
   def init(_attrs, ctx) do
-    fields = %{}
+    pid = pid_to_string()
+    fields = %{
+      pid: pid
+      # pid: attrs["pid"] || ""
+    }
 
     # Process.send(self(), "play", [])
     {:ok, assign(ctx, fields: fields)}
   end
 
-  def handle_info("play", ctx) do
-    # Start playing the audio sample(s)
-    # Update the ctx with the playback state
-    # Process.send(self(), "play", [])
-    {:noreply, ctx}
-  end
-
-  def handle_info("stop", ctx) do
-    # Stop playing the audio sample(s)
-    {:noreply, ctx}
+  defp pid_to_string do
+    self = self()
+    full_pid = "#{inspect(self)}"
+    Regex.scan(~r/\d+\.\d+\.\d+/, full_pid)
   end
 
   @impl true
   def handle_connect(ctx) do
     {:ok, %{fields: ctx.assigns.fields}, ctx}
+  end
+
+  def handle_event("play", _sample, ctx) do
+    {:noreply, ctx}
+  end
+
+  def handle_event("finished", _sample, ctx) do
+    {:noreply, ctx}
   end
 
   @impl true
@@ -41,4 +49,14 @@ defmodule KinoSampler do
     end
     |> Kino.SmartCell.quoted_to_string()
   end
+
+  # @impl true
+  # def handle_connect(_assigns) do
+  #   # Retrieve the value of the attribute
+  #   my_attribute = get_attr(:my_attribute)
+
+  #   # Use the attribute value in your smart cell logic
+  #   IO.puts(my_attribute)
+  #   {:ok, %{}, assigns}
+  # end
 end

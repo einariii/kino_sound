@@ -1,7 +1,7 @@
 # test
 
 ```elixir
-Mix.install([{:kino_sampler, path: "/kino"}])
+Mix.install([{:kino_sampler, path: "."}])
 ```
 
 ## Section
@@ -10,4 +10,8 @@ Mix.install([{:kino_sampler, path: "/kino"}])
 
 ```elixir
 :ok
+```
+
+```elixir
+send_output({"0.265.0", :beckon}, "finished")
 ```
