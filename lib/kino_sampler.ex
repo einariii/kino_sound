@@ -4,8 +4,6 @@ defmodule KinoSampler do
   use Kino.SmartCell, name: "Smart Sounds"
   alias KinoSampler.Player
 
-  # @my_attribute nil
-
   @impl true
   def init(attrs, ctx) do
     pid = self()
@@ -27,11 +25,6 @@ defmodule KinoSampler do
     Regex.scan(~r/\d+\.\d+\.\d+/, full_pid)
   end
 
-  # was having user call this from regular cell to grab the smart cell pid but the output value is different from the self() call in pid_to_string() above
-  def just_pid do
-    self()
-  end
-
   # thought users maybe could call this directly from a regular cell but broadcast_event requires ctx which is out of scope in that case
   # example call:
   # KinoSampler.finished("finished")
@@ -48,19 +41,16 @@ defmodule KinoSampler do
     {:noreply, ctx}
   end
 
-  # other alternative is to send a message to the smart cell using pid but for this to work the pid has to be accurate (see the function just_pid() above)
-  # example call:
-  # dest_pid = KinoSampler.just_pid()
-  # send(dest_pid, "finished")
-  def handle_info(msg, _sample, ctx) do
-    case msg do
-      "finished" -> broadcast_event(ctx, "finished", [])
-      "error" -> broadcast_event(ctx, "error", [])
-      "saved" -> broadcast_event(ctx, "saved", [])
-      "deleted" -> broadcast_event(ctx, "deleted", [])
-      "random" -> broadcast_event(ctx, "random", [])
-      "superrandom" -> broadcast_event(ctx, "superrandom", [])
-    end
+  def handle_info(msg, ctx) do
+    broadcast_event(ctx, "finished", [])
+    # case msg do
+    #   "finished" -> broadcast_event(ctx, "finished", [])
+    #   "error" -> broadcast_event(ctx, "error", [])
+    #   "saved" -> broadcast_event(ctx, "saved", [])
+    #   "deleted" -> broadcast_event(ctx, "deleted", [])
+    #   "random" -> broadcast_event(ctx, "random", [])
+    #   "superrandom" -> broadcast_event(ctx, "superrandom", [])
+    # end
 
     {:noreply, ctx}
   end
