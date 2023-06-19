@@ -1,8 +1,7 @@
 defmodule KinoSound.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
-  @moduledoc false
-
+  @moduledoc """
+  A smart cell for Elixir's Livebook that sonifies your workflow.
+  """
   use Application
 
   @impl true

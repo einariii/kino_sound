@@ -13,8 +13,8 @@ Mix.install([{:kino_sound, path: "."}])
 ```
 
 ```elixir
-dest_pid = KinoSound.get_pid() |> Keyword.get(:pid)
-send(dest_pid, "error")
+dest_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
+send(dest_pid, "random")
 
 # KinoSound.finished(:finished)
 
