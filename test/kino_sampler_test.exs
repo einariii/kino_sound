@@ -1,4 +1,4 @@
-defmodule KinoSamplerTest do
+defmodule KinoSoundTest do
   use ExUnit.Case
-  doctest KinoSampler
+  doctest KinoSound
 end

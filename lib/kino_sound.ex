@@ -1,14 +1,14 @@
-defmodule KinoSampler do
+defmodule KinoSound do
   use Kino.JS, assets_path: "lib/assets"
   use Kino.JS.Live
   use Kino.SmartCell, name: "Smart Sounds"
-  alias KinoSampler.Player
+  alias KinoSound.Player
 
   @impl true
   def init(attrs, ctx) do
     pid = self()
-    :ets.new(:sampler, [:named_table, :set, :public])
-    :ets.insert(:sampler, {:pid, pid})
+    :ets.new(:sound, [:named_table, :set, :public])
+    :ets.insert(:sound, {:pid, pid})
     pid_str = pid_to_string(pid)
 
     fields = %{
@@ -27,7 +27,7 @@ defmodule KinoSampler do
 
   # thought users maybe could call this directly from a regular cell but broadcast_event requires ctx which is out of scope in that case
   # example call:
-  # KinoSampler.finished("finished")
+  # KinoSound.finished("finished")
   def finished(msg, ctx) do
     broadcast_event(ctx, msg, [])
   end
@@ -69,6 +69,6 @@ defmodule KinoSampler do
   end
 
   def get_pid() do
-    :ets.lookup(:sampler, :pid)
+    :ets.lookup(:sound, :pid)
   end
 end
