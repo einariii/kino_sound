@@ -12,24 +12,15 @@ defmodule KinoSound do
     pid_str = pid_to_string(pid)
 
     fields = %{
-      # pid: pid
       pid: attrs["pid"] || pid_str
     }
 
-    # Process.send(self(), "play", [])
     {:ok, assign(ctx, fields: fields)}
   end
 
   defp pid_to_string(pid) do
     full_pid = "#{inspect(pid)}"
     Regex.scan(~r/\d+\.\d+\.\d+/, full_pid)
-  end
-
-  # thought users maybe could call this directly from a regular cell but broadcast_event requires ctx which is out of scope in that case
-  # example call:
-  # KinoSound.finished("finished")
-  def finished(msg, ctx) do
-    broadcast_event(ctx, msg, [])
   end
 
   @impl true
@@ -43,15 +34,6 @@ defmodule KinoSound do
 
   def handle_info(msg, ctx) do
     broadcast_event(ctx, msg, [])
-    # case msg do
-    #   "finished" -> broadcast_event(ctx, "finished", [])
-    #   "error" -> broadcast_event(ctx, "error", [])
-    #   "saved" -> broadcast_event(ctx, "saved", [])
-    #   "deleted" -> broadcast_event(ctx, "deleted", [])
-    #   "random" -> broadcast_event(ctx, "random", [])
-    #   "superrandom" -> broadcast_event(ctx, "superrandom", [])
-    # end
-
     {:noreply, ctx}
   end
 
@@ -70,5 +52,9 @@ defmodule KinoSound do
 
   def get_pid() do
     :ets.lookup(:sound, :pid)
+  end
+
+  def mount_all() do
+    # helper function to enable global sonification
   end
 end
