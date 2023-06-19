@@ -1,5 +1,5 @@
 {
-  "name": "kino_sampler",
+  "name": "kino_sound",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +14,7 @@
     "esbuild": "^0.18.2"
   },
   "dependencies": {
+    "howler": "^2.2.3",
     "smplr": "^0.6.0"
   }
 }

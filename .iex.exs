@@ -1,1 +1,1 @@
-alias KinoSampler.Player
+alias KinoSound.Player

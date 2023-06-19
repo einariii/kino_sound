@@ -1,3 +1,7 @@
+.elixir_ls
+.history
+node_modules
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
@@ -20,7 +24,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-kino_sampler-*.tar
+kino_sound-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/

@@ -1,9 +1,9 @@
-defmodule KinoSampler.MixProject do
+defmodule KinoSound.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :kino_sampler,
+      app: :kino_sound,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
@@ -13,8 +13,8 @@ defmodule KinoSampler.MixProject do
 
   def application do
     [
-      extra_applications: [:logger, :os_mon],
-      mod: {KinoSampler.Application, []}
+      extra_applications: [:logger],
+      mod: {KinoSound.Application, []}
     ]
   end
 
