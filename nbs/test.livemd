@@ -4,7 +4,7 @@
 Mix.install([{:kino_sound, path: "."}])
 ```
 
-## Section
+## kino_sound
 
 <!-- livebook:{"attrs":{},"chunks":null,"kind":"Elixir.KinoSound","livebook_object":"smart_cell"} -->
 
@@ -13,16 +13,11 @@ Mix.install([{:kino_sound, path: "."}])
 ```
 
 ```elixir
-dest_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
-send(dest_pid, "random")
+sound_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
 
-# KinoSound.finished(:finished)
+smart_cells = :cool
 
-# receive do
-#   "finished" -> :ok
-# end
-# Kino.SmartCell.set_attribute(KinoSound, my_attribute: "Hello, smart ass!")
-# Kino.SmartCell.set_attribute("Hello, smart ass!")
-
-# pid = self()
+case smart_cells do
+  :cool -> send(sound_pid, "finished")
+end
 ```
