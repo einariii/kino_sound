@@ -14,6 +14,13 @@ defmodule KinoSoundDemo do
   def loop(n) do
     sound_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
 
+    # Enum.map(1..17, fn msg ->
+    #   Process.sleep(90)
+    #   send(sound_pid, "dmp1")
+    #   Process.sleep(150)
+    #   send(sound_pid, "dmp9")
+    # end)
+
     Enum.map(@dot, fn msg ->
       Process.sleep(700)
       send(sound_pid, msg)
@@ -29,18 +36,9 @@ defmodule KinoSoundDemo do
       send(sound_pid, msg)
     end)
 
-    # Enum.map(@ninetyfive, fn msg ->
-    #   Process.sleep(1800)
-    #   send(sound_pid, msg)
-    # end)
-
     Enum.map(@printer, fn msg ->
       Process.sleep(350)
       send(sound_pid, msg)
-      #   Process.sleep(210)
-      #   send(sound_pid, msg)
-      #   Process.sleep(35)
-      #   send(sound_pid, msg)
     end)
 
     Enum.map(@zmart, fn msg ->
@@ -58,8 +56,13 @@ defmodule KinoSoundDemo do
       send(sound_pid, msg)
     end)
 
+    # Enum.map(1..3, fn msg ->
+    #   Process.sleep(90)
+    #   send(sound_pid, "windows3")
+    # end)
+
     loop(n - 1)
   end
 end
 
-# KinoSoundDemo.loop(100)
+KinoSoundDemo.loop(100)

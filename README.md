@@ -1,8 +1,7 @@
 # KinoSound
 
 A smart cell for Elixir Livebook that allows you to sonify your code. 
-Be pragmatic and set sound notifications for errors and successful evaluations.
-(Or make music.)
+Set sound notifications for your errors, crashes, and successful evaluations. Or, make music.
 
 ## Installation
 
