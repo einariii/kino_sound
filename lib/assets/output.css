@@ -56,7 +56,6 @@ h3 {
 .fright {
     right: 1%;
     position: fixed;
-    mix-blend-mode: luminosity;
 }
 
 .header {
