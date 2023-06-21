@@ -1,6 +1,8 @@
 # KinoSound
 
-**TODO: Add description**
+A smart cell for Elixir Livebook that allows you to sonify your code. 
+Be pragmatic and set sound notifications for errors and successful evaluations.
+(Or make music.)
 
 ## Installation
 
