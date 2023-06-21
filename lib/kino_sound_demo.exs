@@ -1,36 +1,3 @@
-# test
-
-```elixir
-Mix.install([{:kino_sound, path: "."}])
-```
-
-## kino_sound
-
-<!-- livebook:{"attrs":{},"chunks":null,"kind":"Elixir.KinoSound","livebook_object":"smart_cell"} -->
-
-```elixir
-:ok
-```
-
-```elixir
-sound_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
-
-# send(sound_pid, "windows5")
-
-# smart_cells = :nope
-
-# case smart_cells do
-#   :byebye -> send(sound_pid, "deleted")
-#   :nope -> send(sound_pid, "error")
-# end
-
-# Enum.map(1..9, fn _ ->
-#   Process.sleep(900)
-#   send(sound_pid, "centrisquadra")
-# end)
-```
-
-```elixir
 defmodule KinoSoundDemo do
   @dot ["dmp1", "dmp4", "dmp8"]
   @windows ["windows2"]
@@ -95,5 +62,4 @@ defmodule KinoSoundDemo do
   end
 end
 
-KinoSoundDemo.loop(100)
-```
+# KinoSoundDemo.loop(100)

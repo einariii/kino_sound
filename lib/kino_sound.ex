@@ -6,13 +6,15 @@ defmodule KinoSound do
 
   @impl true
   def init(attrs, ctx) do
+    log = Logger.metadata()
     pid = self()
     :ets.new(:sound, [:named_table, :set, :public])
     :ets.insert(:sound, {:pid, pid})
     pid_str = pid_to_string(pid)
 
     fields = %{
-      pid: attrs["pid"] || pid_str
+      pid: attrs["pid"] || pid_str,
+      log: attrs["log"] || ""
     }
 
     {:ok, assign(ctx, fields: fields)}
@@ -56,5 +58,6 @@ defmodule KinoSound do
 
   def mount_all() do
     # helper function to enable global sonification
+    Logger.metadata()
   end
 end
