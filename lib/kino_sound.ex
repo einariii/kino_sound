@@ -2,7 +2,6 @@ defmodule KinoSound do
   use Kino.JS, assets_path: "lib/assets"
   use Kino.JS.Live
   use Kino.SmartCell, name: "Smart Sounds"
-  alias KinoSound.Player
 
   @impl true
   def init(attrs, ctx) do
@@ -46,6 +45,8 @@ defmodule KinoSound do
   def to_source(_attrs) do
     quote do
       :ok
+      # :ets.lookup(:sound, :pid)
+      # attrs["pid"]
     end
     |> Kino.SmartCell.quoted_to_string()
   end
