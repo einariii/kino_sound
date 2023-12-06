@@ -27,10 +27,12 @@ defmodule KinoSound do
     {:ok, %{fields: ctx.assigns.fields}, ctx}
   end
 
+  @impl true
   def handle_event("play", _sample, ctx) do
     {:noreply, ctx}
   end
 
+  @impl true
   def handle_info(msg, ctx) do
     broadcast_event(ctx, msg, [])
     {:noreply, ctx}
