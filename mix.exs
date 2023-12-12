@@ -40,7 +40,8 @@ defmodule KinoSound.MixProject do
 
   defp deps do
     [
-      {:kino, "~> 0.9.4"}
+      {:kino, "~> 0.9.4"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false} 
     ]
   end
 
