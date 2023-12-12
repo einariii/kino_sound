@@ -13,7 +13,6 @@ defmodule KinoSound.MixProject do
       description: @description,
       source_url: @source_url,
       version: @version,
-      version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :dev,
       docs: docs(),
