@@ -1,7 +1,9 @@
 # test
 
 ```elixir
+# Mix.install([{:kino_sound, git: "git://github.com/einariii/kino_sound.git", branch: "main"}])
 Mix.install([{:kino_sound, path: "."}])
+# File.cd!("kino_sampler")
 ```
 
 ## kino_sound
@@ -13,9 +15,33 @@ Mix.install([{:kino_sound, path: "."}])
 ```
 
 ```elixir
-sound_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
+sound_pid = KinoSound.get_pid() |> Keyword.get(:pid)
+```
 
-# send(sound_pid, "windows5")
+```elixir
+defmodule Symphony do
+  @zmart ["zmart"]
+  def aminor do
+    sound_pid = KinoSound.get_pid() |> Keyword.get(:pid)
+    # send(sound_pid, "centrisquadra")
+    Enum.map(@zmart, fn msg ->
+      Process.sleep(700)
+      send(sound_pid, msg)
+      Process.sleep(900)
+      send(sound_pid, msg)
+    end)
+  end
+end
+
+Symphony.aminor()
+```
+
+```elixir
+# sound_pid = KinoSound.get_pid() |> Keyword.get(:pid) |> IO.inspect()
+
+# send(KinoSound.spid(), "error")
+
+send(sound_pid, "windows5")
 
 # smart_cells = :byebye
 
@@ -99,4 +125,8 @@ defmodule KinoSoundDemo do
 end
 
 KinoSoundDemo.loop(100)
+```
+
+```elixir
+
 ```

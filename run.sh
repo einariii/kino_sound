@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/fish
 
 npm install
 npm run build

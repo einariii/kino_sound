@@ -6,7 +6,7 @@ defmodule KinoSound.MixProject do
       app: :kino_sound,
       version: "0.1.0",
       elixir: "~> 1.14",
-      start_permanent: Mix.env() == :prod,
+      start_permanent: Mix.env() == :dev,
       deps: deps()
     ]
   end
