@@ -3,7 +3,7 @@ defmodule KinoSound.MixProject do
 
   @name "kino_util"
   @description "A smart cell for Elixir's Livebook that sonifies your workflow."
-  @version "0.1.0"
+  @version "0.1.1"
   @source_url "https://github.com/einariii/kino_sound"
 
   def project do
@@ -41,7 +41,7 @@ defmodule KinoSound.MixProject do
   defp deps do
     [
       {:kino, "~> 0.9.4"},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false} 
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 
