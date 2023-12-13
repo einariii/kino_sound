@@ -19,9 +19,6 @@ In any subsequent cell, choose "Smart Sounds" from the `+ Smart` dropdown menu. 
 
 A demo performance titled kino_sound_demo.exs is available in the project directory. Copy the code into a Livebook cell and evaluate to hear.
 
-Pending publication on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/kino_sound>.
-
 All sounds created with Elixir code using [Pipesines](https://github.com/einariii/pipesines).
 Feel free to insert your own sounds by adding them to assets/samples and modifying assets/main.js accordingly.
 
