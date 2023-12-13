@@ -3,7 +3,7 @@ defmodule KinoSound.MixProject do
 
   @name "kino_util"
   @description "A smart cell for Elixir's Livebook that sonifies your workflow."
-  @version "0.1.1"
+  @version "0.1.2"
   @source_url "https://github.com/einariii/kino_sound"
 
   def project do
