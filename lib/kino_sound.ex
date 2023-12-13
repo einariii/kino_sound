@@ -17,6 +17,16 @@ defmodule KinoSound do
     {:ok, assign(ctx, fields: fields)}
   end
 
+  def success, do: get_pid() |> send("success")
+  def error, do: get_pid() |> send("error")
+  def restart, do: get_pid() |> send("restart")
+  def saved, do: get_pid() |> send("saved")
+  def deleted, do: get_pid() |> send("deleted")
+  def logger, do: get_pid() |> send("logger")
+  def symphony, do: get_pid() |> send("symphony")
+  def crash, do: get_pid() |> send("crash")
+  def off_and_on, do: get_pid() |> send("off_and_on")
+
   defp pid_to_string(pid) do
     full_pid = "#{inspect(pid)}"
     Regex.scan(~r/\d+\.\d+\.\d+/, full_pid)
@@ -47,13 +57,12 @@ defmodule KinoSound do
   def to_source(_attrs) do
     quote do
       :ok
-      # :ets.lookup(:sound, :pid)
-      # attrs["pid"]
     end
     |> Kino.SmartCell.quoted_to_string()
   end
 
   def get_pid() do
     :ets.lookup(:sound, :pid)
+    |> Keyword.get(:pid)
   end
 end
